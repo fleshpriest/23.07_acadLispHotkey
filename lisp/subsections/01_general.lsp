@@ -106,7 +106,7 @@
 	(LM:open "L:\\Templates\\AutoCad\\BLOCK-lib"))
 
 (defun c:gosink ( / path validInput index value msg userInput) ; open personal plumbing blocks in file explorer
-	(setq path "L:/Templates/AutoCad/BLOCK-lib/PLUMBING/SINK/des_sink")
+	(setq path "C:/path/to/dir")
 	(while (vl-file-directory-p path)
 		(setq validInput nil) ; reset for each loop
 		(setq index (rmIndexFromList '(0 1) (vl-directory-files path)))
@@ -139,7 +139,7 @@
 	)
 	(command ".insert" path "explode" "yes" pause "" "" pause))
 
-sinkBlockPrep ( allDeetsLayer / ) ; workflow for preparing sink models for block library
+(defun c:sinkBlockPrep ( allDeetsLayer / ) ; workflow for preparing sink models for block library
 	; allDeetsLayer : expects t or nil (t if combining cutout template w/ sink plan)
 	(command-s ".undo" "begin")
 	(if allDeetsLayer
